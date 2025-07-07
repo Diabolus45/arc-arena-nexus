@@ -14,6 +14,8 @@ interface User {
     arcCoins: number;
     level: number;
     achievements: string[];
+    following: string[];
+    followers: string[];
   };
   team?: {
     id: string;
@@ -77,6 +79,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           arcCoins: 150,
           level: 12,
           achievements: ['First Win', 'Team Player', 'Rising Star'],
+          following: ['ProGamer123', 'StreamerPro'],
+          followers: ['NewbieFan', 'GameBuddy'],
         },
       };
       setUser(mockUser);
@@ -102,6 +106,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
           arcCoins: 50,
           level: 1,
           achievements: [],
+          following: [],
+          followers: [],
         },
       };
       setUser(newUser);

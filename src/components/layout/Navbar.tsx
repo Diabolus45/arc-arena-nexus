@@ -44,11 +44,11 @@ export const Navbar = () => {
               <span>Tournaments</span>
             </Link>
             <Link 
-              to="/teams" 
+              to="/matchmaking" 
               className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
             >
               <Users className="w-4 h-4" />
-              <span>Teams</span>
+              <span>Matchmaking</span>
             </Link>
             <Link 
               to="/challenges" 

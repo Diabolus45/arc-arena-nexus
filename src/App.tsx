@@ -8,7 +8,7 @@ import { Navbar } from "./components/layout/Navbar";
 import { AuthPage } from "./pages/AuthPage";
 import { Dashboard } from "./pages/Dashboard";
 import { Tournaments } from "./pages/Tournaments";
-import { Teams } from "./pages/Teams";
+import { MatchmakingHub } from "./pages/MatchmakingHub";
 import { Challenges } from "./pages/Challenges";
 import NotFound from "./pages/NotFound";
 
@@ -41,7 +41,7 @@ const AppContent = () => {
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tournaments" element={<Tournaments />} />
-        <Route path="/teams" element={<Teams />} />
+        <Route path="/matchmaking" element={<MatchmakingHub />} />
         <Route path="/challenges" element={<Challenges />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

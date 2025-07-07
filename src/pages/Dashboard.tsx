@@ -3,6 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
+import { Feed } from '@/components/feed/Feed';
 import { Trophy, Users, Gamepad2, TrendingUp, Star, Calendar, Award } from 'lucide-react';
 
 export const Dashboard = () => {
@@ -12,13 +13,6 @@ export const Dashboard = () => {
 
   const nextLevelXP = (user.profile.level + 1) * 1000;
   const progressPercentage = (user.profile.xp / nextLevelXP) * 100;
-
-  // Mock data
-  const recentMatches = [
-    { game: 'Valorant', result: 'Win', score: '13-8', date: '2 hours ago' },
-    { game: 'CS2', result: 'Loss', score: '14-16', date: '1 day ago' },
-    { game: 'Valorant', result: 'Win', score: '13-5', date: '2 days ago' },
-  ];
 
   const upcomingTournaments = [
     { name: 'ARC Valorant Championship', date: 'Dec 15', prize: '$5,000' },
@@ -65,7 +59,7 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Stats Cards */}
         <div className="space-y-4">
           <Card className="card-gradient border-border">
@@ -102,34 +96,42 @@ export const Dashboard = () => {
           </Card>
         </div>
 
-        {/* Recent Matches */}
-        <Card className="card-gradient border-border">
-          <CardHeader>
-            <CardTitle className="flex items-center space-x-2">
-              <Gamepad2 className="w-5 h-5" />
-              <span>Recent Matches</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {recentMatches.map((match, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-secondary/20 rounded-lg">
-                <div>
-                  <div className="font-medium">{match.game}</div>
-                  <div className="text-sm text-muted-foreground">{match.date}</div>
-                </div>
-                <div className="text-right">
-                  <Badge variant={match.result === 'Win' ? 'default' : 'destructive'}>
-                    {match.result}
-                  </Badge>
-                  <div className="text-sm mt-1">{match.score}</div>
-                </div>
-              </div>
-            ))}
-          </CardContent>
-        </Card>
+        {/* Feed */}
+        <div className="lg:col-span-2">
+          <Feed />
+        </div>
 
-        {/* Achievements & Challenges */}
+        {/* Sidebar */}
         <div className="space-y-4">
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Gamepad2 className="w-5 h-5" />
+                <span>Recent Matches</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {[
+                { game: 'Valorant', result: 'Win', score: '13-8', date: '2 hours ago' },
+                { game: 'CS2', result: 'Loss', score: '14-16', date: '1 day ago' },
+                { game: 'Valorant', result: 'Win', score: '13-5', date: '2 days ago' },
+              ].map((match, index) => (
+                <div key={index} className="flex items-center justify-between p-3 bg-secondary/20 rounded-lg">
+                  <div>
+                    <div className="font-medium">{match.game}</div>
+                    <div className="text-sm text-muted-foreground">{match.date}</div>
+                  </div>
+                  <div className="text-right">
+                    <Badge variant={match.result === 'Win' ? 'default' : 'destructive'}>
+                      {match.result}
+                    </Badge>
+                    <div className="text-sm mt-1">{match.score}</div>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+
           <Card className="card-gradient border-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
