@@ -12,6 +12,9 @@ import { MatchmakingHub } from "./pages/MatchmakingHub";
 import { Challenges } from "./pages/Challenges";
 import { Messages } from "./pages/Messages";
 import { TeamDetail } from "./pages/TeamDetail";
+import { Profile } from "./pages/Profile";
+import { Notifications } from "./pages/Notifications";
+import { Wallet } from "./pages/Wallet";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -47,6 +50,9 @@ const AppContent = () => {
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/team/:teamId" element={<TeamDetail />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/wallet" element={<Wallet />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

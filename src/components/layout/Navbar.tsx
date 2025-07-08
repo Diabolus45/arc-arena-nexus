@@ -69,20 +69,24 @@ export const Navbar = () => {
           {/* User Menu */}
           <div className="flex items-center space-x-4">
             {/* Notifications */}
-            <Button variant="ghost" size="sm" className="relative">
-              <Bell className="w-5 h-5" />
-              {notifications > 0 && (
-                <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
-                  {notifications}
-                </Badge>
-              )}
-            </Button>
+            <Link to="/notifications">
+              <Button variant="ghost" size="sm" className="relative">
+                <Bell className="w-5 h-5" />
+                {notifications > 0 && (
+                  <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center text-xs">
+                    {notifications}
+                  </Badge>
+                )}
+              </Button>
+            </Link>
 
             {/* ARC Coins */}
-            <div className="flex items-center space-x-1 bg-accent/10 px-3 py-1 rounded-full">
-              <div className="w-4 h-4 bg-accent rounded-full"></div>
-              <span className="text-sm font-medium">{user.profile.arcCoins}</span>
-            </div>
+            <Link to="/wallet">
+              <div className="flex items-center space-x-1 bg-accent/10 px-3 py-1 rounded-full hover:bg-accent/20 transition-colors cursor-pointer">
+                <div className="w-4 h-4 bg-accent rounded-full"></div>
+                <span className="text-sm font-medium">{user.profile.arcCoins}</span>
+              </div>
+            </Link>
 
             {/* User Dropdown */}
             <DropdownMenu>
