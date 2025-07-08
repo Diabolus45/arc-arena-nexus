@@ -10,6 +10,8 @@ import { Dashboard } from "./pages/Dashboard";
 import { Tournaments } from "./pages/Tournaments";
 import { MatchmakingHub } from "./pages/MatchmakingHub";
 import { Challenges } from "./pages/Challenges";
+import { Messages } from "./pages/Messages";
+import { TeamDetail } from "./pages/TeamDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,6 +45,8 @@ const AppContent = () => {
         <Route path="/tournaments" element={<Tournaments />} />
         <Route path="/matchmaking" element={<MatchmakingHub />} />
         <Route path="/challenges" element={<Challenges />} />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/team/:teamId" element={<TeamDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

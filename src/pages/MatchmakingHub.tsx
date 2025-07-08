@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Link } from 'react-router-dom';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -301,8 +302,10 @@ export const MatchmakingHub = () => {
                       <Trophy className="w-4 h-4 mr-2" />
                       Apply
                     </Button>
-                    <Button variant="outline" size="sm">
-                      View Team
+                    <Button variant="outline" size="sm" asChild>
+                      <Link to={`/team/${team.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                        View Team
+                      </Link>
                     </Button>
                   </div>
                 </CardContent>

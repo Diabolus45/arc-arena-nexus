@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Badge } from '@/components/ui/badge';
 import { useAuth } from '@/contexts/AuthContext';
-import { Trophy, Users, Gamepad2, Bell, LogOut, Settings, User } from 'lucide-react';
+import { Trophy, Users, Gamepad2, MessageCircle, Bell, LogOut, Settings, User } from 'lucide-react';
 
 export const Navbar = () => {
   const { user, logout } = useAuth();
@@ -56,6 +56,13 @@ export const Navbar = () => {
             >
               <Gamepad2 className="w-4 h-4" />
               <span>Challenges</span>
+            </Link>
+            <Link 
+              to="/messages" 
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Messages</span>
             </Link>
           </div>
 
