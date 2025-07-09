@@ -53,39 +53,39 @@ export const Navbar = () => {
             </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-6">
+          {/* Navigation Links - Hidden on mobile, will be replaced with dropdown */}
+          <div className="hidden lg:flex items-center space-x-4">
             <Link 
               to="/dashboard" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               <User className="w-4 h-4" />
               <span>Dashboard</span>
             </Link>
             <Link 
               to="/tournaments" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               <Trophy className="w-4 h-4" />
               <span>Tournaments</span>
             </Link>
             <Link 
               to="/matchmaking" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               <Users className="w-4 h-4" />
               <span>Matchmaking</span>
             </Link>
             <Link 
               to="/challenges" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               <Gamepad2 className="w-4 h-4" />
               <span>Challenges</span>
             </Link>
             <Link 
               to="/messages" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
             >
               <MessageCircle className="w-4 h-4" />
               <span>Messages</span>

@@ -123,15 +123,15 @@ export const Profile = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-6">
+    <div className="max-w-7xl mx-auto p-4 lg:p-6 space-y-4 lg:space-y-6">
       {/* Profile Header */}
       <Card className="card-gradient border-border">
-        <CardContent className="p-6">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center space-x-6">
-              <div className="relative">
-                <Avatar className="h-32 w-32">
-                  <AvatarFallback className="primary-gradient text-white text-3xl">
+        <CardContent className="p-4 lg:p-6">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between space-y-4 lg:space-y-0">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 lg:space-x-6">
+              <div className="relative flex-shrink-0">
+                <Avatar className="h-24 w-24 sm:h-28 sm:w-28 lg:h-32 lg:w-32">
+                  <AvatarFallback className="primary-gradient text-white text-2xl sm:text-3xl">
                     {user.username.charAt(0).toUpperCase()}
                   </AvatarFallback>
                 </Avatar>
@@ -141,46 +141,48 @@ export const Profile = () => {
                   </Button>
                 )}
               </div>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <h1 className="text-4xl font-bold primary-gradient bg-clip-text text-transparent">
+              <div className="space-y-2 lg:space-y-3 text-center sm:text-left">
+                <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold primary-gradient bg-clip-text text-transparent">
                     {user.username}
                   </h1>
-                  <Badge variant="secondary" className="text-sm">{user.role}</Badge>
-                  <div className="flex items-center space-x-1">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                    <span className="text-sm text-success">Online</span>
+                  <div className="flex items-center justify-center sm:justify-start space-x-2">
+                    <Badge variant="secondary" className="text-sm">{user.role}</Badge>
+                    <div className="flex items-center space-x-1">
+                      <div className="w-2 h-2 bg-success rounded-full"></div>
+                      <span className="text-sm text-success">Online</span>
+                    </div>
                   </div>
                 </div>
-                <p className="text-muted-foreground max-w-md">
+                <p className="text-muted-foreground text-sm lg:text-base max-w-md">
                   {formData.bio}
                 </p>
-                <div className="flex items-center space-x-6 text-sm">
-                  <div className="flex items-center space-x-2">
-                    <Trophy className="w-4 h-4 text-primary" />
+                <div className="grid grid-cols-2 lg:flex lg:items-center gap-2 lg:gap-6 text-xs lg:text-sm">
+                  <div className="flex items-center space-x-1 lg:space-x-2">
+                    <Trophy className="w-3 h-3 lg:w-4 lg:h-4 text-primary" />
                     <span className="font-medium">Level {user.profile.level}</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Star className="w-4 h-4 text-accent" />
+                  <div className="flex items-center space-x-1 lg:space-x-2">
+                    <Star className="w-3 h-3 lg:w-4 lg:h-4 text-accent" />
                     <span className="font-medium">{user.profile.xp.toLocaleString()} XP</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Users className="w-4 h-4 text-success" />
+                  <div className="flex items-center space-x-1 lg:space-x-2">
+                    <Users className="w-3 h-3 lg:w-4 lg:h-4 text-success" />
                     <span className="font-medium">{user.profile.followers?.length || 0} Followers</span>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Users className="w-4 h-4 text-muted-foreground" />
+                  <div className="flex items-center space-x-1 lg:space-x-2">
+                    <Users className="w-3 h-3 lg:w-4 lg:h-4 text-muted-foreground" />
                     <span className="font-medium">{user.profile.following?.length || 0} Following</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+            <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
               <Button 
                 variant={isFollowing ? "outline" : "default"} 
                 size="sm"
                 onClick={() => setIsFollowing(!isFollowing)}
-                className="primary-gradient"
+                className="primary-gradient w-full sm:w-auto"
               >
                 {isFollowing ? (
                   <>
@@ -194,17 +196,17 @@ export const Profile = () => {
                   </>
                 )}
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="w-full sm:w-auto">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Message
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="hidden lg:flex">
                 <Settings className="w-4 h-4 mr-2" />
                 Settings
               </Button>
-              <Button onClick={() => setIsEditing(!isEditing)} variant={isEditing ? "destructive" : "default"}>
+              <Button onClick={() => setIsEditing(!isEditing)} variant={isEditing ? "destructive" : "default"} size="sm" className="w-full sm:w-auto">
                 <Edit2 className="w-4 h-4 mr-2" />
-                {isEditing ? 'Cancel' : 'Edit Profile'}
+                {isEditing ? 'Cancel' : 'Edit'}
               </Button>
             </div>
           </div>
@@ -212,11 +214,11 @@ export const Profile = () => {
       </Card>
 
       <Tabs defaultValue="overview" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="stats">Game Stats</TabsTrigger>
-          <TabsTrigger value="matches">Recent Matches</TabsTrigger>
-          <TabsTrigger value="settings">Settings</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 text-xs lg:text-sm">
+          <TabsTrigger value="overview" className="text-xs lg:text-sm">Overview</TabsTrigger>
+          <TabsTrigger value="stats" className="text-xs lg:text-sm">Stats</TabsTrigger>
+          <TabsTrigger value="matches" className="text-xs lg:text-sm">Matches</TabsTrigger>
+          <TabsTrigger value="settings" className="text-xs lg:text-sm">Settings</TabsTrigger>
         </TabsList>
 
         <TabsContent value="overview" className="mt-6">
@@ -399,27 +401,27 @@ export const Profile = () => {
             <div className="lg:col-span-2 space-y-4">
               <Card className="card-gradient border-border">
                 <CardHeader>
-                  <CardTitle>Linked Game Accounts</CardTitle>
-                  <CardDescription>Your verified gaming accounts and IDs</CardDescription>
+                  <CardTitle className="text-lg lg:text-xl">Linked Game Accounts</CardTitle>
+                  <CardDescription className="text-sm">Your verified gaming accounts and IDs</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid gap-4">
+                  <div className="grid gap-3 lg:gap-4">
                     {gameIds.map((gameId, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
-                        <div className="flex items-center space-x-4">
-                          <div className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center">
-                            <Gamepad2 className="w-6 h-6 text-primary" />
+                      <div key={index} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 lg:p-4 bg-secondary/20 rounded-lg space-y-2 sm:space-y-0">
+                        <div className="flex items-center space-x-3 lg:space-x-4">
+                          <div className="w-10 h-10 lg:w-12 lg:h-12 bg-primary/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Gamepad2 className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
                           </div>
-                          <div>
-                            <div className="flex items-center space-x-2">
-                              <p className="font-medium">{gameId.game}</p>
-                              <Badge variant="outline" className="text-xs">{gameId.platform}</Badge>
+                          <div className="min-w-0 flex-1">
+                            <div className="flex flex-col sm:flex-row sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
+                              <p className="font-medium text-sm lg:text-base">{gameId.game}</p>
+                              <Badge variant="outline" className="text-xs w-fit">{gameId.platform}</Badge>
                             </div>
-                            <p className="text-sm text-muted-foreground">{gameId.username}</p>
+                            <p className="text-xs lg:text-sm text-muted-foreground truncate">{gameId.username}</p>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-2">
-                          <Badge variant={gameId.verified ? "default" : "outline"}>
+                        <div className="flex items-center justify-between sm:justify-end space-x-2">
+                          <Badge variant={gameId.verified ? "default" : "outline"} className="text-xs">
                             {gameId.verified ? "Verified" : "Pending"}
                           </Badge>
                           <Button variant="ghost" size="sm">
@@ -428,7 +430,7 @@ export const Profile = () => {
                         </div>
                       </div>
                     ))}
-                    <Button variant="outline" className="w-full border-dashed">
+                    <Button variant="outline" className="w-full border-dashed text-sm">
                       <Plus className="w-4 h-4 mr-2" />
                       Link New Account
                     </Button>
@@ -439,37 +441,37 @@ export const Profile = () => {
           </div>
         </TabsContent>
 
-        <TabsContent value="stats" className="mt-6">
-          <div className="grid gap-6">
+        <TabsContent value="stats" className="mt-4 lg:mt-6">
+          <div className="grid gap-4 lg:gap-6">
             {gameStats.map((stat, index) => (
               <Card key={index} className="card-gradient border-border">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="flex items-center space-x-2">
-                      <Gamepad2 className="w-5 h-5" />
+                <CardHeader className="pb-3 lg:pb-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between space-y-2 sm:space-y-0">
+                    <CardTitle className="flex items-center space-x-2 text-lg lg:text-xl">
+                      <Gamepad2 className="w-4 h-4 lg:w-5 lg:h-5" />
                       <span>{stat.game}</span>
                     </CardTitle>
-                    <Badge className="primary-gradient text-lg px-3 py-1">{stat.rank}</Badge>
+                    <Badge className="primary-gradient text-sm lg:text-lg px-2 py-1 lg:px-3 lg:py-1 w-fit">{stat.rank}</Badge>
                   </div>
-                  <CardDescription>Current Season: {stat.currentSeason} • Peak: {stat.peakRank}</CardDescription>
+                  <CardDescription className="text-xs lg:text-sm">Current Season: {stat.currentSeason} • Peak: {stat.peakRank}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-success">{stat.kd}</p>
-                      <p className="text-sm text-muted-foreground">K/D Ratio</p>
+                      <p className="text-xl lg:text-2xl font-bold text-success">{stat.kd}</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground">K/D Ratio</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-primary">{stat.winRate}</p>
-                      <p className="text-sm text-muted-foreground">Win Rate</p>
+                      <p className="text-xl lg:text-2xl font-bold text-primary">{stat.winRate}</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground">Win Rate</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-accent">{stat.hoursPlayed}</p>
-                      <p className="text-sm text-muted-foreground">Hours Played</p>
+                      <p className="text-xl lg:text-2xl font-bold text-accent">{stat.hoursPlayed}</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground">Hours Played</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-2xl font-bold text-warning">{stat.peakRank}</p>
-                      <p className="text-sm text-muted-foreground">Peak Rank</p>
+                      <p className="text-xl lg:text-2xl font-bold text-warning">{stat.peakRank}</p>
+                      <p className="text-xs lg:text-sm text-muted-foreground">Peak Rank</p>
                     </div>
                   </div>
                 </CardContent>
