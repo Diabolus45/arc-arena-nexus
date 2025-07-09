@@ -11,11 +11,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/contexts/AuthContext';
-import { Edit2, Trophy, Users, Star, Gamepad2, MapPin, Calendar, Shield, Camera, Settings, Lock, Bell, Eye, Plus, X } from 'lucide-react';
+import { Edit2, Trophy, Users, Star, Gamepad2, MapPin, Calendar, Shield, Camera, Settings, Lock, Bell, Eye, Plus, X, UserPlus, UserMinus, MessageCircle } from 'lucide-react';
 
 export const Profile = () => {
   const { user, updateProfile } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
+  const [isFollowing, setIsFollowing] = useState(false);
   const [formData, setFormData] = useState({
     username: user?.username || '',
     bio: 'Competitive gamer passionate about FPS games. Always looking to improve and learn new strategies.',
@@ -174,7 +175,29 @@ export const Profile = () => {
                 </div>
               </div>
             </div>
-            <div className="flex space-x-2">
+            <div className="flex flex-col space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+              <Button 
+                variant={isFollowing ? "outline" : "default"} 
+                size="sm"
+                onClick={() => setIsFollowing(!isFollowing)}
+                className="primary-gradient"
+              >
+                {isFollowing ? (
+                  <>
+                    <UserMinus className="w-4 h-4 mr-2" />
+                    Unfollow
+                  </>
+                ) : (
+                  <>
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    Follow
+                  </>
+                )}
+              </Button>
+              <Button variant="outline" size="sm">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Message
+              </Button>
               <Button variant="outline" size="sm">
                 <Settings className="w-4 h-4 mr-2" />
                 Settings

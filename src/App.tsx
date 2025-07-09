@@ -42,7 +42,8 @@ const AppContent = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <Routes>
+      <div className="pt-16">
+        <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tournaments" element={<Tournaments />} />
@@ -54,7 +55,8 @@ const AppContent = () => {
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/wallet" element={<Wallet />} />
         <Route path="*" element={<NotFound />} />
-      </Routes>
+        </Routes>
+      </div>
     </div>
   );
 };
