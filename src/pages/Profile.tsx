@@ -166,11 +166,11 @@ export const Profile = () => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <Users className="w-4 h-4 text-success" />
-                    <span className="font-medium">{user.profile.followers.length} Followers</span>
+                    <span className="font-medium">{user.profile.followers?.length || 0} Followers</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <Users className="w-4 h-4 text-muted-foreground" />
-                    <span className="font-medium">{user.profile.following.length} Following</span>
+                    <span className="font-medium">{user.profile.following?.length || 0} Following</span>
                   </div>
                 </div>
               </div>
@@ -381,12 +381,15 @@ export const Profile = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {user.profile.achievements.slice(0, 5).map((achievement, index) => (
+                    {(user.profile.achievements || []).slice(0, 5).map((achievement, index) => (
                       <div key={index} className="flex items-center space-x-2">
                         <Star className="w-4 h-4 text-accent" />
                         <span className="text-sm">{achievement}</span>
                       </div>
                     ))}
+                    {(!user.profile.achievements || user.profile.achievements.length === 0) && (
+                      <p className="text-sm text-muted-foreground">No achievements yet</p>
+                    )}
                   </div>
                 </CardContent>
               </Card>
