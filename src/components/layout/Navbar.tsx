@@ -53,7 +53,7 @@ export const Navbar = () => {
             </span>
           </Link>
 
-          {/* Navigation Links - Hidden on mobile, will be replaced with dropdown */}
+          {/* Navigation Links - Role-based */}
           <div className="hidden lg:flex items-center space-x-4">
             <Link 
               to="/dashboard" 
@@ -69,20 +69,43 @@ export const Navbar = () => {
               <Trophy className="w-4 h-4" />
               <span>Tournaments</span>
             </Link>
-            <Link 
-              to="/matchmaking" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
-            >
-              <Users className="w-4 h-4" />
-              <span>Matchmaking</span>
-            </Link>
-            <Link 
-              to="/challenges" 
-              className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
-            >
-              <Gamepad2 className="w-4 h-4" />
-              <span>Challenges</span>
-            </Link>
+            
+            {user.role === 'team_owner' ? (
+              <>
+                <Link 
+                  to="/teams" 
+                  className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                >
+                  <Users className="w-4 h-4" />
+                  <span>Team Management</span>
+                </Link>
+                <Link 
+                  to="/matchmaking" 
+                  className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                >
+                  <Gamepad2 className="w-4 h-4" />
+                  <span>Recruitment</span>
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link 
+                  to="/matchmaking" 
+                  className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                >
+                  <Users className="w-4 h-4" />
+                  <span>Matchmaking</span>
+                </Link>
+                <Link 
+                  to="/challenges" 
+                  className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
+                >
+                  <Gamepad2 className="w-4 h-4" />
+                  <span>Challenges</span>
+                </Link>
+              </>
+            )}
+            
             <Link 
               to="/messages" 
               className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
