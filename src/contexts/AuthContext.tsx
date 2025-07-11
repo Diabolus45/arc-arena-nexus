@@ -27,7 +27,7 @@ interface User {
 interface AuthContextType {
   user: User | null;
   isLoading: boolean;
-  login: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string, role: 'player' | 'team') => Promise<void>;
   register: (userData: RegisterData) => Promise<void>;
   logout: () => void;
   updateProfile: (data: Partial<User['profile']>) => void;
@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setIsLoading(false);
   }, []);
 
-  const login = async (email: string, password: string) => {
+  const login = async (email: string, password: string, role: 'player' | 'team') => {
     setIsLoading(true);
     try {
       // Mock login - in real app this would be API call
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         id: '1',
         username: email.split('@')[0],
         email,
-        role: 'player',
+        role: role,
         profile: {
           gamePreferences: ['Valorant', 'CS2'],
           skillRoles: ['Rifler', 'IGL'],

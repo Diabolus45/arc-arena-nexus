@@ -99,11 +99,11 @@ export const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
               setFormData(prev => ({ ...prev, role: value }))
             }>
               <SelectTrigger>
-                <SelectValue placeholder="Login as..." />
+                <SelectValue placeholder="Select your role" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="player">Login as a Player</SelectItem>
-                <SelectItem value="team">Login as a Team</SelectItem>
+                <SelectItem value="player">Player</SelectItem>
+                <SelectItem value="team">Team</SelectItem>
               </SelectContent>
             </Select>
           </div>

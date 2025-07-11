@@ -11,6 +11,7 @@ interface LoginFormProps {
 }
 
 export const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
+  const [selectedRole, setSelectedRole] = useState<'player' | 'team' | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login, isLoading } = useAuth();
@@ -18,7 +19,7 @@ export const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await login(email, password);
+      await login(email, password, selectedRole!);
       toast({
         title: "Login Successful",
         description: "Welcome back to ARC!",
@@ -32,11 +33,52 @@ export const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
     }
   };
 
+  const handleRoleSelect = (role: 'player' | 'team') => {
+    setSelectedRole(role);
+  };
+
+  if (!selectedRole) {
+    return (
+      <Card className="w-full max-w-md card-gradient border-border">
+        <CardHeader className="text-center">
+          <CardTitle className="text-2xl primary-gradient bg-clip-text text-transparent">
+            Welcome Back
+          </CardTitle>
+          <CardDescription>Choose how you want to login</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <Button 
+            onClick={() => handleRoleSelect('player')}
+            className="w-full h-12 primary-gradient hover:opacity-90"
+          >
+            Player
+          </Button>
+          <Button 
+            onClick={() => handleRoleSelect('team')}
+            className="w-full h-12 secondary-gradient hover:opacity-90"
+          >
+            Team
+          </Button>
+          <div className="text-center">
+            <Button
+              type="button"
+              variant="link"
+              onClick={onSwitchToRegister}
+              className="text-muted-foreground"
+            >
+              Don't have an account? Register
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card className="w-full max-w-md card-gradient border-border">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl primary-gradient bg-clip-text text-transparent">
-          Welcome Back
+          {selectedRole === 'player' ? 'Player Login' : 'Team Login'}
         </CardTitle>
         <CardDescription>Sign in to your ARC account</CardDescription>
       </CardHeader>
@@ -71,14 +113,22 @@ export const LoginForm = ({ onSwitchToRegister }: LoginFormProps) => {
           >
             {isLoading ? 'Signing In...' : 'Sign In'}
           </Button>
-          <div className="text-center">
+          <div className="flex justify-between">
+            <Button
+              type="button"
+              variant="link"
+              onClick={() => setSelectedRole(null)}
+              className="text-muted-foreground p-0"
+            >
+              ← Back
+            </Button>
             <Button
               type="button"
               variant="link"
               onClick={onSwitchToRegister}
-              className="text-muted-foreground"
+              className="text-muted-foreground p-0"
             >
-              Don't have an account? Register
+              Register
             </Button>
           </div>
         </form>
