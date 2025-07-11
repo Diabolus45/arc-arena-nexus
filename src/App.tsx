@@ -13,6 +13,7 @@ import { Challenges } from "./pages/Challenges";
 import { Messages } from "./pages/Messages";
 import { TeamDetail } from "./pages/TeamDetail";
 import { Profile } from "./pages/Profile";
+import { TeamProfile } from "./pages/TeamProfile";
 import { Notifications } from "./pages/Notifications";
 import { Wallet } from "./pages/Wallet";
 import NotFound from "./pages/NotFound";
@@ -52,6 +53,7 @@ const AppContent = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/team/:teamId" element={<TeamDetail />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/team-profile" element={<TeamProfile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/wallet" element={<Wallet />} />
         <Route path="*" element={<NotFound />} />

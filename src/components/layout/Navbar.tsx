@@ -73,7 +73,7 @@ export const Navbar = () => {
             {user.role === 'team' ? (
               <>
                 <Link 
-                  to="/teams" 
+                  to="/team-profile" 
                   className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
                 >
                   <Users className="w-4 h-4" />
