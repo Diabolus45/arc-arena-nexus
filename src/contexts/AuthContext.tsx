@@ -4,7 +4,7 @@ interface User {
   id: string;
   username: string;
   email: string;
-  role: 'player' | 'creator' | 'team_owner' | 'admin';
+  role: 'player' | 'team';
   profile: {
     age?: number;
     location?: string;
@@ -37,7 +37,7 @@ interface RegisterData {
   username: string;
   email: string;
   password: string;
-  role: 'player' | 'creator' | 'team_owner';
+  role: 'player' | 'team';
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);

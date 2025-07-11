@@ -70,7 +70,7 @@ export const Navbar = () => {
               <span>Tournaments</span>
             </Link>
             
-            {user.role === 'team_owner' ? (
+            {user.role === 'team' ? (
               <>
                 <Link 
                   to="/teams" 

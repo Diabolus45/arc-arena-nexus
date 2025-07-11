@@ -17,7 +17,7 @@ export const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: '' as 'player' | 'creator' | 'team_owner' | '',
+    role: '' as 'player' | 'team' | '',
   });
   const { register, isLoading } = useAuth();
 
@@ -95,16 +95,15 @@ export const RegisterForm = ({ onSwitchToLogin }: RegisterFormProps) => {
           </div>
           <div className="space-y-2">
             <Label htmlFor="role">Role</Label>
-            <Select onValueChange={(value: 'player' | 'creator' | 'team_owner') => 
+            <Select onValueChange={(value: 'player' | 'team') => 
               setFormData(prev => ({ ...prev, role: value }))
             }>
               <SelectTrigger>
-                <SelectValue placeholder="Select your role" />
+                <SelectValue placeholder="Login as..." />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="player">Player/Gamer</SelectItem>
-                <SelectItem value="creator">Content Creator</SelectItem>
-                <SelectItem value="team_owner">Team Owner</SelectItem>
+                <SelectItem value="player">Login as a Player</SelectItem>
+                <SelectItem value="team">Login as a Team</SelectItem>
               </SelectContent>
             </Select>
           </div>

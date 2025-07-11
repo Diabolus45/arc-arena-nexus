@@ -8,7 +8,7 @@ export const Dashboard = () => {
   if (!user) return null;
 
   // Route to appropriate dashboard based on user role
-  if (user.role === 'team_owner') {
+  if (user.role === 'team') {
     return <TeamDashboard />;
   }
   
