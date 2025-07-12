@@ -1,32 +1,45 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { Feed } from '@/components/feed/Feed';
-import { Trophy, TrendingUp, Star, DollarSign, Calendar, Users, MessageSquare, Bell } from 'lucide-react';
+import { Calendar, Trophy, Clock, MessageSquare } from 'lucide-react';
 
 export const TeamDashboard = () => {
   const { user } = useAuth();
 
   if (!user) return null;
 
-  const teamStats = {
-    totalWins: 45,
-    winRate: 78,
-    currentRank: 12,
-    totalEarnings: 15000,
-  };
-
   const upcomingMatches = [
-    { opponent: 'Team Alpha', date: 'Dec 15', time: '7:00 PM', prize: '$2,000' },
-    { opponent: 'Beta Squad', date: 'Dec 18', time: '8:30 PM', prize: '$5,000' },
+    { 
+      opponent: 'Team Alpha', 
+      date: 'Dec 15', 
+      time: '7:00 PM', 
+      game: 'Valorant',
+      type: 'Scrim',
+      status: 'Confirmed'
+    },
+    { 
+      opponent: 'Beta Squad', 
+      date: 'Dec 18', 
+      time: '8:30 PM', 
+      game: 'CS2',
+      type: 'Tournament',
+      status: 'Pending'
+    },
+    { 
+      opponent: 'Pro Esports', 
+      date: 'Dec 20', 
+      time: '6:00 PM', 
+      game: 'Dota 2',
+      type: 'Match',
+      status: 'Confirmed'
+    },
   ];
 
-  const quickActions = [
-    { icon: Bell, label: 'Ping All Players', action: () => console.log('Ping players') },
-    { icon: Calendar, label: 'Schedule Match', action: () => console.log('Schedule') },
-    { icon: MessageSquare, label: 'Team Post', action: () => console.log('Post') },
-    { icon: Users, label: 'Manage Roster', action: () => console.log('Roster') },
+  const todaySchedule = [
+    { event: 'Valorant Practice', time: '4:00 PM', status: 'Upcoming' },
+    { event: 'Strategy Review', time: '6:00 PM', status: 'Upcoming' },
+    { event: 'Team Meeting', time: '8:00 PM', status: 'Scheduled' },
   ];
 
   return (
@@ -36,89 +49,78 @@ export const TeamDashboard = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold primary-gradient bg-clip-text text-transparent">
-              Team Dashboard
+              Team Home
             </h1>
             <p className="text-muted-foreground mt-2">
-              Welcome back! Stay updated with your team's latest activities
+              Welcome back! Stay updated with your team's latest activities and feed
             </p>
           </div>
-          <div className="flex flex-wrap gap-2">
-            {quickActions.map((action, index) => (
-              <Button key={index} variant="outline" size="sm" onClick={action.action}>
-                <action.icon className="w-4 h-4 mr-2" />
-                {action.label}
-              </Button>
-            ))}
-          </div>
+          <Button className="primary-gradient text-white">
+            <MessageSquare className="w-4 h-4 mr-2" />
+            Create Team Post
+          </Button>
         </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:gap-6">
-        {/* Team Stats */}
+        {/* Sidebar - Schedule & Matches */}
         <div className="lg:col-span-1 space-y-4">
-          <Card className="card-gradient border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Team Wins</CardTitle>
-              <Trophy className="h-4 w-4 text-primary" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-primary">{teamStats.totalWins}</div>
-              <p className="text-xs text-muted-foreground">+8 this month</p>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Win Rate</CardTitle>
-              <TrendingUp className="h-4 w-4 text-success" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-success">{teamStats.winRate}%</div>
-              <p className="text-xs text-muted-foreground">+3% this month</p>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Global Rank</CardTitle>
-              <Star className="h-4 w-4 text-accent" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-accent">#{teamStats.currentRank}</div>
-              <p className="text-xs text-muted-foreground">+3 positions</p>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient border-border">
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Earnings</CardTitle>
-              <DollarSign className="h-4 w-4 text-green-500" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold text-green-500">${teamStats.totalEarnings.toLocaleString()}</div>
-              <p className="text-xs text-muted-foreground">+$2,500 this month</p>
-            </CardContent>
-          </Card>
-
           {/* Upcoming Matches */}
           <Card className="card-gradient border-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Calendar className="w-5 h-5" />
+                <Trophy className="w-5 h-5" />
                 <span>Upcoming Matches</span>
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
               {upcomingMatches.map((match, index) => (
                 <div key={index} className="p-3 bg-secondary/20 rounded-lg">
-                  <div className="font-medium text-sm">vs {match.opponent}</div>
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="font-medium text-sm">vs {match.opponent}</div>
+                    <span className={`text-xs px-2 py-1 rounded ${
+                      match.status === 'Confirmed' ? 'bg-green-500/20 text-green-400' : 'bg-yellow-500/20 text-yellow-400'
+                    }`}>
+                      {match.status}
+                    </span>
+                  </div>
                   <div className="text-xs text-muted-foreground">{match.date} at {match.time}</div>
-                  <div className="text-sm text-primary mt-1">{match.prize} Prize Pool</div>
+                  <div className="flex justify-between items-center mt-2">
+                    <span className="text-xs text-primary">{match.game}</span>
+                    <span className="text-xs text-accent">{match.type}</span>
+                  </div>
                 </div>
               ))}
               <Button variant="outline" className="w-full mt-3">
                 <Trophy className="w-4 h-4 mr-2" />
                 Register for Tournament
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Today's Schedule */}
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Clock className="w-5 h-5" />
+                <span>Today's Schedule</span>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              {todaySchedule.map((item, index) => (
+                <div key={index} className="p-3 bg-primary/10 rounded-lg">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <div className="font-medium text-sm">{item.event}</div>
+                      <div className="text-xs text-muted-foreground">{item.time}</div>
+                    </div>
+                    <span className="text-xs text-primary">{item.status}</span>
+                  </div>
+                </div>
+              ))}
+              <Button variant="outline" className="w-full mt-3">
+                <Calendar className="w-4 h-4 mr-2" />
+                View Full Schedule
               </Button>
             </CardContent>
           </Card>

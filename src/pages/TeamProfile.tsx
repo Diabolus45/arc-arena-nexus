@@ -3,7 +3,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useAuth } from '@/contexts/AuthContext';
-import { Users, UserPlus, Trophy, Calendar, Briefcase, Clock, Settings, MessageSquare, Gamepad2, Bell } from 'lucide-react';
+import { Users, UserPlus, Trophy, Star, Award, Calendar, Briefcase, Settings, MessageSquare, Gamepad2, Target, Crown } from 'lucide-react';
 
 export const TeamProfile = () => {
   const { user } = useAuth();
@@ -12,40 +12,52 @@ export const TeamProfile = () => {
 
   const gameRosters = {
     valorant: [
-      { name: 'ProPlayer1', role: 'IGL', status: 'Online', performance: 85 },
-      { name: 'FragGod', role: 'Duelist', status: 'Online', performance: 92 },
-      { name: 'SupportKing', role: 'Controller', status: 'Away', performance: 78 },
-      { name: 'EntryFrag', role: 'Initiator', status: 'Offline', performance: 88 },
-      { name: 'SentinelPro', role: 'Sentinel', status: 'Online', performance: 83 },
+      { name: 'ProPlayer1', role: 'IGL', status: 'Online', performance: 85, joinDate: 'Jan 2024' },
+      { name: 'FragGod', role: 'Duelist', status: 'Online', performance: 92, joinDate: 'Feb 2024' },
+      { name: 'SupportKing', role: 'Controller', status: 'Away', performance: 78, joinDate: 'Mar 2024' },
+      { name: 'EntryFrag', role: 'Initiator', status: 'Offline', performance: 88, joinDate: 'Apr 2024' },
+      { name: 'SentinelPro', role: 'Sentinel', status: 'Online', performance: 83, joinDate: 'May 2024' },
     ],
     cs2: [
-      { name: 'AWPMaster', role: 'AWPer', status: 'Online', performance: 94 },
-      { name: 'RifleKing', role: 'Rifler', status: 'Online', performance: 87 },
-      { name: 'SupportGod', role: 'Support', status: 'Away', performance: 81 },
-      { name: 'LurkerPro', role: 'Lurker', status: 'Online', performance: 89 },
+      { name: 'AWPMaster', role: 'AWPer', status: 'Online', performance: 94, joinDate: 'Jan 2024' },
+      { name: 'RifleKing', role: 'Rifler', status: 'Online', performance: 87, joinDate: 'Feb 2024' },
+      { name: 'SupportGod', role: 'Support', status: 'Away', performance: 81, joinDate: 'Mar 2024' },
+      { name: 'LurkerPro', role: 'Lurker', status: 'Online', performance: 89, joinDate: 'Apr 2024' },
     ],
     dota2: [
-      { name: 'CarryLord', role: 'Carry', status: 'Online', performance: 91 },
-      { name: 'MidGod', role: 'Mid', status: 'Online', performance: 86 },
-      { name: 'SupportWiz', role: 'Support', status: 'Away', performance: 84 },
+      { name: 'CarryLord', role: 'Carry', status: 'Online', performance: 91, joinDate: 'Jan 2024' },
+      { name: 'MidGod', role: 'Mid', status: 'Online', performance: 86, joinDate: 'Feb 2024' },
+      { name: 'SupportWiz', role: 'Support', status: 'Away', performance: 84, joinDate: 'Mar 2024' },
     ],
   };
 
   const teamStaff = [
-    { name: 'Coach Mike', role: 'Head Coach', access: 'Full Access', status: 'Online' },
-    { name: 'Analyst Sarah', role: 'Analyst', access: 'Limited Access', status: 'Online' },
-    { name: 'Manager John', role: 'Team Manager', access: 'Admin Access', status: 'Away' },
+    { name: 'Coach Mike', role: 'Head Coach', access: 'Full Access', status: 'Online', specialization: 'Strategy' },
+    { name: 'Analyst Sarah', role: 'Performance Analyst', access: 'Limited Access', status: 'Online', specialization: 'Data Analysis' },
+    { name: 'Manager John', role: 'Team Manager', access: 'Admin Access', status: 'Away', specialization: 'Operations' },
+    { name: 'Mental Coach Alex', role: 'Sports Psychologist', access: 'Limited Access', status: 'Online', specialization: 'Mental Health' },
   ];
 
-  const scheduleEvents = [
-    { event: 'Scrim vs Team Alpha', date: 'Dec 15', time: '6:00 PM', type: 'Practice' },
-    { event: 'Strategy Review', date: 'Dec 16', time: '4:00 PM', type: 'Meeting' },
-    { event: 'Tournament Match', date: 'Dec 18', time: '8:00 PM', type: 'Match' },
+  const achievements = [
+    { title: 'VCT Champions 2024', position: '2nd Place', prize: '$50,000', date: 'Nov 2024' },
+    { title: 'Regional League Winner', position: '1st Place', prize: '$25,000', date: 'Oct 2024' },
+    { title: 'Summer Tournament', position: '3rd Place', prize: '$10,000', date: 'Aug 2024' },
+    { title: 'Spring Championship', position: '1st Place', prize: '$30,000', date: 'May 2024' },
   ];
 
-  const recruitmentPosts = [
-    { position: 'Entry Fragger', game: 'Valorant', applications: 23, posted: '2 days ago' },
-    { position: 'Support Player', game: 'CS2', applications: 15, posted: '1 week ago' },
+  const tournamentsParticipated = [
+    { name: 'VCT Champions 2024', result: '2nd Place', earnings: '$50,000' },
+    { name: 'Masters Madrid', result: 'Top 8', earnings: '$15,000' },
+    { name: 'Regional Qualifiers', result: '1st Place', earnings: '$25,000' },
+    { name: 'IEM Katowice', result: 'Top 4', earnings: '$20,000' },
+    { name: 'ESL One', result: '3rd Place', earnings: '$12,000' },
+  ];
+
+  const playersRecruited = [
+    { name: 'ProPlayer1', role: 'IGL', recruitedDate: 'Jan 2024', recruitedFrom: 'Free Agent' },
+    { name: 'FragGod', role: 'Duelist', recruitedDate: 'Feb 2024', recruitedFrom: 'Team Sigma' },
+    { name: 'AWPMaster', role: 'AWPer', recruitedDate: 'Jan 2024', recruitedFrom: 'Academy Team' },
+    { name: 'SupportKing', role: 'Controller', recruitedDate: 'Mar 2024', recruitedFrom: 'Team Beta' },
   ];
 
   return (
@@ -55,10 +67,10 @@ export const TeamProfile = () => {
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold primary-gradient bg-clip-text text-transparent">
-              Team Management
+              Team Profile
             </h1>
             <p className="text-muted-foreground mt-2">
-              Manage your team, recruit players, and track performance
+              Complete overview of team members, staff, achievements and tournament history
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -67,24 +79,24 @@ export const TeamProfile = () => {
               Post Recruitment
             </Button>
             <Button variant="outline">
-              <Bell className="w-4 h-4 mr-2" />
-              Ping All Players
-            </Button>
-            <Button variant="outline">
-              <Calendar className="w-4 h-4 mr-2" />
-              Schedule Maker
-            </Button>
-            <Button variant="outline">
-              <MessageSquare className="w-4 h-4 mr-2" />
-              Team Post
+              <Settings className="w-4 h-4 mr-2" />
+              Team Settings
             </Button>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-        {/* Game Rosters */}
-        <div className="lg:col-span-2 space-y-4">
+      <Tabs defaultValue="rosters" className="w-full">
+        <TabsList className="grid w-full grid-cols-5">
+          <TabsTrigger value="rosters">Game Rosters</TabsTrigger>
+          <TabsTrigger value="staff">Staff</TabsTrigger>
+          <TabsTrigger value="achievements">Achievements</TabsTrigger>
+          <TabsTrigger value="tournaments">Tournaments</TabsTrigger>
+          <TabsTrigger value="recruited">Recruited</TabsTrigger>
+        </TabsList>
+
+        {/* Game Rosters Tab */}
+        <TabsContent value="rosters" className="space-y-4">
           <Card className="card-gradient border-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
@@ -92,7 +104,7 @@ export const TeamProfile = () => {
                 <span>Game Rosters</span>
               </CardTitle>
               <CardDescription>
-                Manage players across different games
+                Team members organized by different games and their roles
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -106,29 +118,30 @@ export const TeamProfile = () => {
                 {Object.entries(gameRosters).map(([game, members]) => (
                   <TabsContent key={game} value={game} className="space-y-3">
                     {members.map((member, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-secondary/20 rounded-lg">
-                        <div className="flex items-center space-x-3">
+                      <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                        <div className="flex items-center space-x-4">
                           <div className={`w-3 h-3 rounded-full ${
                             member.status === 'Online' ? 'bg-green-500' : 
                             member.status === 'Away' ? 'bg-yellow-500' : 'bg-gray-500'
                           }`} />
                           <div>
-                            <div className="font-medium text-sm">{member.name}</div>
-                            <div className="text-xs text-muted-foreground">{member.role}</div>
+                            <div className="font-medium">{member.name}</div>
+                            <div className="text-sm text-muted-foreground">{member.role} • Joined {member.joinDate}</div>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-4">
                           <div className="text-right">
                             <div className="text-sm font-medium">{member.performance}%</div>
                             <div className="text-xs text-muted-foreground">Performance</div>
                           </div>
+                          <Badge variant="outline">{member.status}</Badge>
                           <Button variant="outline" size="sm">
                             Manage
                           </Button>
                         </div>
                       </div>
                     ))}
-                    <Button variant="outline" className="w-full mt-3">
+                    <Button variant="outline" className="w-full mt-4">
                       <UserPlus className="w-4 h-4 mr-2" />
                       Add {game.toUpperCase()} Player
                     </Button>
@@ -137,143 +150,157 @@ export const TeamProfile = () => {
               </Tabs>
             </CardContent>
           </Card>
+        </TabsContent>
 
+        {/* Staff Tab */}
+        <TabsContent value="staff" className="space-y-4">
           <Card className="card-gradient border-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
                 <Briefcase className="w-5 h-5" />
-                <span>Active Recruitments</span>
-              </CardTitle>
-              <CardDescription>
-                Manage your recruitment posts and applications
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {recruitmentPosts.map((post, index) => (
-                <div key={index} className="p-3 bg-primary/10 rounded-lg">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="font-medium text-sm">{post.position}</div>
-                      <div className="text-xs text-muted-foreground">{post.game}</div>
-                      <div className="text-xs text-muted-foreground">{post.posted}</div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Badge variant="secondary">{post.applications} apps</Badge>
-                      <Button variant="outline" size="sm">
-                        View
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-              <Button variant="outline" className="w-full mt-3">
-                <UserPlus className="w-4 h-4 mr-2" />
-                Create New Post
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-
-        {/* Schedule & Staff Management */}
-        <div className="space-y-4">
-          <Card className="card-gradient border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Clock className="w-5 h-5" />
-                <span>Team Schedule</span>
-              </CardTitle>
-              <CardDescription>
-                Manage team practices and matches
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {scheduleEvents.map((event, index) => (
-                <div key={index} className="p-3 bg-secondary/20 rounded-lg">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <div className="font-medium text-sm">{event.event}</div>
-                      <div className="text-xs text-muted-foreground">{event.date} at {event.time}</div>
-                    </div>
-                    <Badge variant={event.type === 'Match' ? 'default' : 'secondary'}>
-                      {event.type}
-                    </Badge>
-                  </div>
-                </div>
-              ))}
-              <Button variant="outline" className="w-full mt-3">
-                <Calendar className="w-4 h-4 mr-2" />
-                Create Schedule
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card className="card-gradient border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Settings className="w-5 h-5" />
                 <span>Team Staff</span>
               </CardTitle>
               <CardDescription>
-                Manage staff members and their access levels
+                Staff members with their roles and access levels
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-4">
               {teamStaff.map((staff, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-secondary/20 rounded-lg">
-                  <div className="flex items-center space-x-3">
+                <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                  <div className="flex items-center space-x-4">
                     <div className={`w-3 h-3 rounded-full ${
                       staff.status === 'Online' ? 'bg-green-500' : 
                       staff.status === 'Away' ? 'bg-yellow-500' : 'bg-gray-500'
                     }`} />
                     <div>
-                      <div className="font-medium text-sm">{staff.name}</div>
-                      <div className="text-xs text-muted-foreground">{staff.role}</div>
+                      <div className="font-medium">{staff.name}</div>
+                      <div className="text-sm text-muted-foreground">{staff.role} • {staff.specialization}</div>
                     </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Badge variant="outline" className="text-xs">
-                      {staff.access}
-                    </Badge>
+                  <div className="flex items-center space-x-3">
+                    <Badge variant="outline">{staff.access}</Badge>
+                    <Badge variant="secondary">{staff.status}</Badge>
                     <Button variant="outline" size="sm">
-                      Edit
+                      Edit Access
                     </Button>
                   </div>
                 </div>
               ))}
-              <Button variant="outline" className="w-full mt-3">
+              <Button variant="outline" className="w-full mt-4">
                 <UserPlus className="w-4 h-4 mr-2" />
                 Add Staff Member
               </Button>
             </CardContent>
           </Card>
+        </TabsContent>
 
+        {/* Achievements Tab */}
+        <TabsContent value="achievements" className="space-y-4">
           <Card className="card-gradient border-border">
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <MessageSquare className="w-5 h-5" />
-                <span>Communication</span>
+                <Trophy className="w-5 h-5" />
+                <span>Team Achievements</span>
               </CardTitle>
               <CardDescription>
-                Team communication tools
+                Tournament wins and notable accomplishments
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <Button variant="outline" className="w-full">
-                <Bell className="w-4 h-4 mr-2" />
-                Ping All Players
-              </Button>
-              <Button variant="outline" className="w-full">
-                <MessageSquare className="w-4 h-4 mr-2" />
-                Send Announcement
-              </Button>
-              <Button variant="outline" className="w-full">
-                <Users className="w-4 h-4 mr-2" />
-                Team Meeting
+            <CardContent className="space-y-4">
+              {achievements.map((achievement, index) => (
+                <div key={index} className="flex items-center justify-between p-4 bg-primary/10 rounded-lg">
+                  <div className="flex items-center space-x-4">
+                    <div className={`p-2 rounded-full ${
+                      achievement.position.includes('1st') ? 'bg-yellow-500/20' : 
+                      achievement.position.includes('2nd') ? 'bg-gray-400/20' : 'bg-amber-600/20'
+                    }`}>
+                      {achievement.position.includes('1st') ? <Crown className="w-5 h-5 text-yellow-500" /> : 
+                       achievement.position.includes('2nd') ? <Award className="w-5 h-5 text-gray-400" /> : 
+                       <Star className="w-5 h-5 text-amber-600" />}
+                    </div>
+                    <div>
+                      <div className="font-medium">{achievement.title}</div>
+                      <div className="text-sm text-muted-foreground">{achievement.position} • {achievement.date}</div>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium text-green-500">{achievement.prize}</div>
+                    <div className="text-xs text-muted-foreground">Prize Money</div>
+                  </div>
+                </div>
+              ))}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Tournaments Tab */}
+        <TabsContent value="tournaments" className="space-y-4">
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Target className="w-5 h-5" />
+                <span>Tournament Participation</span>
+              </CardTitle>
+              <CardDescription>
+                Complete history of tournament participation and results
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {tournamentsParticipated.map((tournament, index) => (
+                <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                  <div>
+                    <div className="font-medium">{tournament.name}</div>
+                    <div className="text-sm text-muted-foreground">Result: {tournament.result}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-medium text-green-500">{tournament.earnings}</div>
+                    <div className="text-xs text-muted-foreground">Earnings</div>
+                  </div>
+                </div>
+              ))}
+              <div className="p-4 bg-primary/10 rounded-lg">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-primary">$122,000</div>
+                  <div className="text-sm text-muted-foreground">Total Tournament Earnings</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Recruited Players Tab */}
+        <TabsContent value="recruited" className="space-y-4">
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Users className="w-5 h-5" />
+                <span>Players Recruited</span>
+              </CardTitle>
+              <CardDescription>
+                History of players recruited to the team
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {playersRecruited.map((player, index) => (
+                <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                  <div>
+                    <div className="font-medium">{player.name}</div>
+                    <div className="text-sm text-muted-foreground">{player.role} • Recruited from {player.recruitedFrom}</div>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm font-medium">{player.recruitedDate}</div>
+                    <div className="text-xs text-muted-foreground">Recruitment Date</div>
+                  </div>
+                </div>
+              ))}
+              <Button variant="outline" className="w-full mt-4">
+                <UserPlus className="w-4 h-4 mr-2" />
+                View All Recruitment Posts
               </Button>
             </CardContent>
           </Card>
-        </div>
-      </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
