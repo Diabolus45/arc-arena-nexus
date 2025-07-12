@@ -77,14 +77,14 @@ export const Navbar = () => {
                   className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
                 >
                   <Users className="w-4 h-4" />
-                  <span>Team Management</span>
+                  <span>Profile</span>
                 </Link>
                 <Link 
-                  to="/matchmaking" 
+                  to="/team-management" 
                   className="flex items-center space-x-1 text-muted-foreground hover:text-foreground transition-colors text-sm"
                 >
-                  <Gamepad2 className="w-4 h-4" />
-                  <span>Recruitment</span>
+                  <Settings className="w-4 h-4" />
+                  <span>Management</span>
                 </Link>
               </>
             ) : (

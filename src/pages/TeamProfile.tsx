@@ -87,13 +87,89 @@ export const TeamProfile = () => {
       </div>
 
       <Tabs defaultValue="rosters" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="rosters">Game Rosters</TabsTrigger>
-          <TabsTrigger value="staff">Staff</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-4">
+          <TabsTrigger value="posts">Posts</TabsTrigger>
+          <TabsTrigger value="rosters">Rosters</TabsTrigger>
+          <TabsTrigger value="staff">Staff & Settings</TabsTrigger>
           <TabsTrigger value="achievements">Achievements</TabsTrigger>
-          <TabsTrigger value="tournaments">Tournaments</TabsTrigger>
-          <TabsTrigger value="recruited">Recruited</TabsTrigger>
         </TabsList>
+
+        {/* Posts Tab */}
+        <TabsContent value="posts" className="space-y-4">
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <MessageSquare className="w-5 h-5" />
+                <span>Team Posts</span>
+              </CardTitle>
+              <CardDescription>
+                Create and manage team posts, announcements and updates
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <Button className="primary-gradient text-white w-full">
+                <MessageSquare className="w-4 h-4 mr-2" />
+                Create New Post
+              </Button>
+              
+              <div className="space-y-4">
+                <div className="p-4 bg-secondary/20 rounded-lg">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <div className="font-medium">Valorant Championship Win!</div>
+                      <div className="text-sm text-muted-foreground">Posted 2 hours ago</div>
+                    </div>
+                    <Button variant="outline" size="sm">Edit</Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Amazing victory against Team Alpha! Our coordination was perfect and everyone played their best roles.
+                  </p>
+                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                    <span>👍 45 likes</span>
+                    <span>💬 12 comments</span>
+                    <span>🔄 8 shares</span>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-secondary/20 rounded-lg">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <div className="font-medium">New Player Recruitment</div>
+                      <div className="text-sm text-muted-foreground">Posted yesterday</div>
+                    </div>
+                    <Button variant="outline" size="sm">Edit</Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Welcome FragGod to our Valorant roster! Looking forward to dominating the upcoming tournaments.
+                  </p>
+                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                    <span>👍 32 likes</span>
+                    <span>💬 8 comments</span>
+                    <span>🔄 5 shares</span>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-secondary/20 rounded-lg">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <div className="font-medium">Training Schedule Update</div>
+                      <div className="text-sm text-muted-foreground">Posted 3 days ago</div>
+                    </div>
+                    <Button variant="outline" size="sm">Edit</Button>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    Updated practice schedule for this week. Check your calendars and be ready for intense sessions!
+                  </p>
+                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                    <span>👍 28 likes</span>
+                    <span>💬 5 comments</span>
+                    <span>🔄 3 shares</span>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
 
         {/* Game Rosters Tab */}
         <TabsContent value="rosters" className="space-y-4">
@@ -152,7 +228,7 @@ export const TeamProfile = () => {
           </Card>
         </TabsContent>
 
-        {/* Staff Tab */}
+        {/* Staff & Settings Tab */}
         <TabsContent value="staff" className="space-y-4">
           <Card className="card-gradient border-border">
             <CardHeader>
@@ -192,6 +268,76 @@ export const TeamProfile = () => {
               </Button>
             </CardContent>
           </Card>
+
+          {/* Team Settings */}
+          <Card className="card-gradient border-border">
+            <CardHeader>
+              <CardTitle className="flex items-center space-x-2">
+                <Settings className="w-5 h-5" />
+                <span>Team Settings</span>
+              </CardTitle>
+              <CardDescription>
+                Configure team preferences and permissions
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <Button variant="outline" className="h-auto p-4 flex flex-col items-start">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Users className="w-4 h-4" />
+                    <span className="font-medium">Team Privacy</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Control who can view team information</span>
+                </Button>
+
+                <Button variant="outline" className="h-auto p-4 flex flex-col items-start">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <MessageSquare className="w-4 h-4" />
+                    <span className="font-medium">Communication</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Set up team communication channels</span>
+                </Button>
+
+                <Button variant="outline" className="h-auto p-4 flex flex-col items-start">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Trophy className="w-4 h-4" />
+                    <span className="font-medium">Tournament Settings</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Configure tournament preferences</span>
+                </Button>
+
+                <Button variant="outline" className="h-auto p-4 flex flex-col items-start">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <Briefcase className="w-4 h-4" />
+                    <span className="font-medium">Role Permissions</span>
+                  </div>
+                  <span className="text-xs text-muted-foreground">Manage staff and player permissions</span>
+                </Button>
+              </div>
+
+              <div className="border-t pt-4">
+                <h4 className="font-medium mb-3">Quick Actions</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <Button variant="outline" size="sm">
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    Invite Players
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <MessageSquare className="w-4 h-4 mr-2" />
+                    Team Announcement
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <Trophy className="w-4 h-4 mr-2" />
+                    Register Tournament
+                  </Button>
+                  <Button variant="outline" size="sm">
+                    <Settings className="w-4 h-4 mr-2" />
+                    Export Data
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </TabsContent>
 
         {/* Achievements Tab */}
@@ -203,100 +349,82 @@ export const TeamProfile = () => {
                 <span>Team Achievements</span>
               </CardTitle>
               <CardDescription>
-                Tournament wins and notable accomplishments
+                Tournament wins, player recruitment history, and tournament participation
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              {achievements.map((achievement, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-primary/10 rounded-lg">
-                  <div className="flex items-center space-x-4">
-                    <div className={`p-2 rounded-full ${
-                      achievement.position.includes('1st') ? 'bg-yellow-500/20' : 
-                      achievement.position.includes('2nd') ? 'bg-gray-400/20' : 'bg-amber-600/20'
-                    }`}>
-                      {achievement.position.includes('1st') ? <Crown className="w-5 h-5 text-yellow-500" /> : 
-                       achievement.position.includes('2nd') ? <Award className="w-5 h-5 text-gray-400" /> : 
-                       <Star className="w-5 h-5 text-amber-600" />}
-                    </div>
-                    <div>
-                      <div className="font-medium">{achievement.title}</div>
-                      <div className="text-sm text-muted-foreground">{achievement.position} • {achievement.date}</div>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-medium text-green-500">{achievement.prize}</div>
-                    <div className="text-xs text-muted-foreground">Prize Money</div>
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
-        </TabsContent>
+            <CardContent>
+              <Tabs defaultValue="wins" className="w-full">
+                <TabsList className="grid w-full grid-cols-3 mb-4">
+                  <TabsTrigger value="wins">Achievements</TabsTrigger>
+                  <TabsTrigger value="tournaments">Tournaments</TabsTrigger>
+                  <TabsTrigger value="recruited">Recruited</TabsTrigger>
+                </TabsList>
 
-        {/* Tournaments Tab */}
-        <TabsContent value="tournaments" className="space-y-4">
-          <Card className="card-gradient border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Target className="w-5 h-5" />
-                <span>Tournament Participation</span>
-              </CardTitle>
-              <CardDescription>
-                Complete history of tournament participation and results
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {tournamentsParticipated.map((tournament, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
-                  <div>
-                    <div className="font-medium">{tournament.name}</div>
-                    <div className="text-sm text-muted-foreground">Result: {tournament.result}</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-medium text-green-500">{tournament.earnings}</div>
-                    <div className="text-xs text-muted-foreground">Earnings</div>
-                  </div>
-                </div>
-              ))}
-              <div className="p-4 bg-primary/10 rounded-lg">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-primary">$122,000</div>
-                  <div className="text-sm text-muted-foreground">Total Tournament Earnings</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                <TabsContent value="wins" className="space-y-4">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-primary/10 rounded-lg">
+                      <div className="flex items-center space-x-4">
+                        <div className={`p-2 rounded-full ${
+                          achievement.position.includes('1st') ? 'bg-yellow-500/20' : 
+                          achievement.position.includes('2nd') ? 'bg-gray-400/20' : 'bg-amber-600/20'
+                        }`}>
+                          {achievement.position.includes('1st') ? <Crown className="w-5 h-5 text-yellow-500" /> : 
+                           achievement.position.includes('2nd') ? <Award className="w-5 h-5 text-gray-400" /> : 
+                           <Star className="w-5 h-5 text-amber-600" />}
+                        </div>
+                        <div>
+                          <div className="font-medium">{achievement.title}</div>
+                          <div className="text-sm text-muted-foreground">{achievement.position} • {achievement.date}</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-medium text-green-500">{achievement.prize}</div>
+                        <div className="text-xs text-muted-foreground">Prize Money</div>
+                      </div>
+                    </div>
+                  ))}
+                </TabsContent>
 
-        {/* Recruited Players Tab */}
-        <TabsContent value="recruited" className="space-y-4">
-          <Card className="card-gradient border-border">
-            <CardHeader>
-              <CardTitle className="flex items-center space-x-2">
-                <Users className="w-5 h-5" />
-                <span>Players Recruited</span>
-              </CardTitle>
-              <CardDescription>
-                History of players recruited to the team
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {playersRecruited.map((player, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
-                  <div>
-                    <div className="font-medium">{player.name}</div>
-                    <div className="text-sm text-muted-foreground">{player.role} • Recruited from {player.recruitedFrom}</div>
+                <TabsContent value="tournaments" className="space-y-4">
+                  {tournamentsParticipated.map((tournament, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                      <div>
+                        <div className="font-medium">{tournament.name}</div>
+                        <div className="text-sm text-muted-foreground">Result: {tournament.result}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-medium text-green-500">{tournament.earnings}</div>
+                        <div className="text-xs text-muted-foreground">Earnings</div>
+                      </div>
+                    </div>
+                  ))}
+                  <div className="p-4 bg-primary/10 rounded-lg">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">$122,000</div>
+                      <div className="text-sm text-muted-foreground">Total Tournament Earnings</div>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <div className="text-sm font-medium">{player.recruitedDate}</div>
-                    <div className="text-xs text-muted-foreground">Recruitment Date</div>
-                  </div>
-                </div>
-              ))}
-              <Button variant="outline" className="w-full mt-4">
-                <UserPlus className="w-4 h-4 mr-2" />
-                View All Recruitment Posts
-              </Button>
+                </TabsContent>
+
+                <TabsContent value="recruited" className="space-y-4">
+                  {playersRecruited.map((player, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-secondary/20 rounded-lg">
+                      <div>
+                        <div className="font-medium">{player.name}</div>
+                        <div className="text-sm text-muted-foreground">{player.role} • Recruited from {player.recruitedFrom}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-medium">{player.recruitedDate}</div>
+                        <div className="text-xs text-muted-foreground">Recruitment Date</div>
+                      </div>
+                    </div>
+                  ))}
+                  <Button variant="outline" className="w-full mt-4">
+                    <UserPlus className="w-4 h-4 mr-2" />
+                    View All Recruitment Posts
+                  </Button>
+                </TabsContent>
+              </Tabs>
             </CardContent>
           </Card>
         </TabsContent>
