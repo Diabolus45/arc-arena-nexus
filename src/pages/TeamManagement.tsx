@@ -79,6 +79,59 @@ export const TeamManagement = () => {
     },
   ];
 
+  const playerRecruitments = [
+    {
+      playerName: 'ShadowStrike',
+      game: 'Valorant',
+      rank: 'Radiant',
+      role: 'Duelist',
+      experience: '3 years pro experience',
+      posted: '1 day ago',
+      availability: 'Full-time',
+      contact: 'Looking for tier 1 team'
+    },
+    {
+      playerName: 'AimGod',
+      game: 'CS2',
+      rank: 'Global Elite',
+      role: 'AWPer',
+      experience: '5 years competitive',
+      posted: '3 days ago',
+      availability: 'Part-time',
+      contact: 'Available for scrims'
+    },
+    {
+      playerName: 'MidMaster',
+      game: 'Dota 2',
+      rank: 'Immortal',
+      role: 'Mid Laner',
+      experience: '2 years team experience',
+      posted: '2 days ago',
+      availability: 'Full-time',
+      contact: 'Seeking serious team'
+    },
+    {
+      playerName: 'SupportKing',
+      game: 'Valorant',
+      rank: 'Immortal 3',
+      role: 'Controller',
+      experience: '4 years gaming',
+      posted: '5 days ago',
+      availability: 'Flexible',
+      contact: 'Team player mindset'
+    },
+    {
+      playerName: 'CarryPro',
+      game: 'Dota 2',
+      rank: 'Divine',
+      role: 'Carry',
+      experience: '3 years competitive',
+      posted: '1 week ago',
+      availability: 'Full-time',
+      contact: 'Ready to commit'
+    },
+  ];
+
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
@@ -246,7 +299,7 @@ export const TeamManagement = () => {
 
         {/* Recruitment Tab */}
         <TabsContent value="recruitment" className="space-y-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             {/* Create Recruitment Post */}
             <Card className="card-gradient border-border">
               <CardHeader>
@@ -335,6 +388,52 @@ export const TeamManagement = () => {
                 <Button variant="outline" className="w-full">
                   <Target className="w-4 h-4 mr-2" />
                   View All Recruitment Posts
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Player Recruitments */}
+            <Card className="card-gradient border-border">
+              <CardHeader>
+                <CardTitle className="flex items-center space-x-2">
+                  <Users className="w-5 h-5" />
+                  <span>Player Recruitments</span>
+                </CardTitle>
+                <CardDescription>
+                  Browse players looking for teams
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {playerRecruitments.map((player, index) => (
+                  <div key={index} className="p-4 bg-secondary/20 rounded-lg">
+                    <div className="flex justify-between items-start mb-2">
+                      <div>
+                        <div className="font-medium">{player.playerName}</div>
+                        <div className="text-sm text-muted-foreground">{player.game} • {player.role}</div>
+                        <div className="text-xs text-muted-foreground">{player.posted}</div>
+                      </div>
+                      <Badge variant="outline">{player.rank}</Badge>
+                    </div>
+                    <div className="text-xs text-muted-foreground mb-2">
+                      {player.experience} • {player.availability}
+                    </div>
+                    <div className="text-xs text-muted-foreground mb-3">
+                      {player.contact}
+                    </div>
+                    <div className="flex gap-2">
+                      <Button variant="outline" size="sm" className="flex-1">
+                        View Profile
+                      </Button>
+                      <Button size="sm" className="flex-1 primary-gradient text-white">
+                        Contact
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+                
+                <Button variant="outline" className="w-full">
+                  <Users className="w-4 h-4 mr-2" />
+                  Browse All Players
                 </Button>
               </CardContent>
             </Card>
